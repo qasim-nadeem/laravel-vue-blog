@@ -1,8 +1,8 @@
 import Vue from 'vue';
+import hooks from "./pages/hooks";
 import VueRouter from 'vue-router';
 //pages
 import blogPage from './pages/blog.vue';
-import hooks from "./pages/hooks";
 import methods from "./pages/methods";
 import loopcondition from "./pages/loopcondition";
 

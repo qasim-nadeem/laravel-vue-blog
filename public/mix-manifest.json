@@ -1,3 +1,8 @@
 {
-    "/js/app.js": "/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/js/admin-template/scripts.js": "/js/admin-template/scripts.js",
+    "/js/admin-template/chart-area-demo.js": "/js/admin-template/chart-area-demo.js",
+    "/js/admin-template/chart-bar-demo.js": "/js/admin-template/chart-bar-demo.js",
+    "/js/admin-template/datatables-demo.js": "/js/admin-template/datatables-demo.js",
+    "/css/admin-template/styles.css": "/css/admin-template/styles.css"
 }

@@ -1996,7 +1996,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  //include vue
 //components
 
-vue__WEBPACK_IMPORTED_MODULE_1__.default.component('mainpage', __webpack_require__(/*! ./components/mainpage.vue */ "./resources/js/components/mainpage.vue").default); //initialize vue
+vue__WEBPACK_IMPORTED_MODULE_1__.default.component('admin', __webpack_require__(/*! ./pages/admin/dashboard.vue */ "./resources/js/pages/admin/dashboard.vue").default); //initialize vue
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   el: '#app',
@@ -2048,14 +2048,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _pages_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/hooks */ "./resources/js/pages/hooks.vue");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _pages_blog_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/blog.vue */ "./resources/js/pages/blog.vue");
-/* harmony import */ var _pages_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/hooks */ "./resources/js/pages/hooks.vue");
+/* harmony import */ var _pages_blog_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/blog.vue */ "./resources/js/pages/blog.vue");
 /* harmony import */ var _pages_methods__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/methods */ "./resources/js/pages/methods.vue");
 /* harmony import */ var _pages_loopcondition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/loopcondition */ "./resources/js/pages/loopcondition.vue");
 
- //pages
 
+ //pages
 
 
 
@@ -2067,11 +2067,11 @@ vue__WEBPACK_IMPORTED_MODULE_4__.default.use(vue_router__WEBPACK_IMPORTED_MODULE
   routes: [{
     path: '/blog',
     name: 'blog',
-    component: _pages_blog_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    component: _pages_blog_vue__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
     path: '/hooks',
     name: 'hooks',
-    component: _pages_hooks__WEBPACK_IMPORTED_MODULE_1__.default
+    component: _pages_hooks__WEBPACK_IMPORTED_MODULE_0__.default
   }, {
     path: '/methods',
     name: 'methods',
@@ -19443,10 +19443,10 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./resources/js/components/mainpage.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/components/mainpage.vue ***!
-  \**********************************************/
+/***/ "./resources/js/pages/admin/dashboard.vue":
+/*!************************************************!*\
+  !*** ./resources/js/pages/admin/dashboard.vue ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19454,8 +19454,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mainpage.vue?vue&type=template&id=471efdda& */ "./resources/js/components/mainpage.vue?vue&type=template&id=471efdda&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dashboard.vue?vue&type=template&id=3691f90a& */ "./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 var script = {}
 
@@ -19464,8 +19464,8 @@ var script = {}
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
   script,
-  _mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__.render,
-  _mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -19475,7 +19475,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/mainpage.vue"
+component.options.__file = "resources/js/pages/admin/dashboard.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -19682,19 +19682,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/mainpage.vue?vue&type=template&id=471efdda&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/mainpage.vue?vue&type=template&id=471efdda& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a& ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_mainpage_vue_vue_type_template_id_471efdda___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./mainpage.vue?vue&type=template&id=471efdda& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mainpage.vue?vue&type=template&id=471efdda&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_dashboard_vue_vue_type_template_id_3691f90a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./dashboard.vue?vue&type=template&id=3691f90a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a&");
 
 
 /***/ }),
@@ -19767,10 +19767,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mainpage.vue?vue&type=template&id=471efdda&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/mainpage.vue?vue&type=template&id=471efdda& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/admin/dashboard.vue?vue&type=template&id=3691f90a& ***!
+  \**********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19783,31 +19783,1516 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v(" New Component ")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "blog" } } }, [_vm._v("blog")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "hooks" } } }, [
-        _vm._v("Vue Hooks")
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "methods" } } }, [
-        _vm._v("Methods")
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: { name: "loopcondition" } } }, [
-        _vm._v("Loops and Conditions")
-      ]),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "sb-topnav navbar navbar-expand navbar-dark bg-dark" },
+        [
+          _c(
+            "a",
+            { staticClass: "navbar-brand", attrs: { href: "index.html" } },
+            [_vm._v("Start Bootstrap")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link btn-sm order-1 order-lg-0",
+              attrs: { id: "sidebarToggle", href: "#" }
+            },
+            [_c("i", { staticClass: "fas fa-bars" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass:
+                "d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
+            },
+            [
+              _c("div", { staticClass: "input-group" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Search for...",
+                    "aria-label": "Search",
+                    "aria-describedby": "basic-addon2"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" }
+                    },
+                    [_c("i", { staticClass: "fas fa-search" })]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("ul", { staticClass: "navbar-nav ml-auto ml-md-0" }, [
+            _c("li", { staticClass: "nav-item dropdown" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link dropdown-toggle",
+                  attrs: {
+                    id: "userDropdown",
+                    href: "#",
+                    role: "button",
+                    "data-toggle": "dropdown",
+                    "aria-haspopup": "true",
+                    "aria-expanded": "false"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-user fa-fw" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown-menu dropdown-menu-right",
+                  attrs: { "aria-labelledby": "userDropdown" }
+                },
+                [
+                  _c(
+                    "a",
+                    { staticClass: "dropdown-item", attrs: { href: "#" } },
+                    [_vm._v("Settings")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "dropdown-item", attrs: { href: "#" } },
+                    [_vm._v("Activity Log")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown-divider" }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-item",
+                      attrs: { href: "login.html" }
+                    },
+                    [_vm._v("Logout")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "layoutSidenav" } }, [
+        _c("div", { attrs: { id: "layoutSidenav_nav" } }, [
+          _c(
+            "nav",
+            {
+              staticClass: "sb-sidenav accordion sb-sidenav-dark",
+              attrs: { id: "sidenavAccordion" }
+            },
+            [
+              _c("div", { staticClass: "sb-sidenav-menu" }, [
+                _c("div", { staticClass: "nav" }, [
+                  _c("div", { staticClass: "sb-sidenav-menu-heading" }, [
+                    _vm._v("Core")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "index.html" } },
+                    [
+                      _c("div", { staticClass: "sb-nav-link-icon" }, [
+                        _c("i", { staticClass: "fas fa-tachometer-alt" })
+                      ]),
+                      _vm._v(
+                        "\n                            Dashboard\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sb-sidenav-menu-heading" }, [
+                    _vm._v("Interface")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link collapsed",
+                      attrs: {
+                        href: "#",
+                        "data-toggle": "collapse",
+                        "data-target": "#collapseLayouts",
+                        "aria-expanded": "false",
+                        "aria-controls": "collapseLayouts"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "sb-nav-link-icon" }, [
+                        _c("i", { staticClass: "fas fa-columns" })
+                      ]),
+                      _vm._v(
+                        "\n                            Layouts\n                            "
+                      ),
+                      _c("div", { staticClass: "sb-sidenav-collapse-arrow" }, [
+                        _c("i", { staticClass: "fas fa-angle-down" })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapseLayouts",
+                        "aria-labelledby": "headingOne",
+                        "data-parent": "#sidenavAccordion"
+                      }
+                    },
+                    [
+                      _c("nav", { staticClass: "sb-sidenav-menu-nested nav" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { href: "layout-static.html" }
+                          },
+                          [_vm._v("Static Navigation")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { href: "layout-sidenav-light.html" }
+                          },
+                          [_vm._v("Light Sidenav")]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link collapsed",
+                      attrs: {
+                        href: "#",
+                        "data-toggle": "collapse",
+                        "data-target": "#collapsePages",
+                        "aria-expanded": "false",
+                        "aria-controls": "collapsePages"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "sb-nav-link-icon" }, [
+                        _c("i", { staticClass: "fas fa-book-open" })
+                      ]),
+                      _vm._v(
+                        "\n                            Pages\n                            "
+                      ),
+                      _c("div", { staticClass: "sb-sidenav-collapse-arrow" }, [
+                        _c("i", { staticClass: "fas fa-angle-down" })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "collapse",
+                      attrs: {
+                        id: "collapsePages",
+                        "aria-labelledby": "headingTwo",
+                        "data-parent": "#sidenavAccordion"
+                      }
+                    },
+                    [
+                      _c(
+                        "nav",
+                        {
+                          staticClass: "sb-sidenav-menu-nested nav accordion",
+                          attrs: { id: "sidenavAccordionPages" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "nav-link collapsed",
+                              attrs: {
+                                href: "#",
+                                "data-toggle": "collapse",
+                                "data-target": "#pagesCollapseAuth",
+                                "aria-expanded": "false",
+                                "aria-controls": "pagesCollapseAuth"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Authentication\n                                    "
+                              ),
+                              _c(
+                                "div",
+                                { staticClass: "sb-sidenav-collapse-arrow" },
+                                [_c("i", { staticClass: "fas fa-angle-down" })]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "collapse",
+                              attrs: {
+                                id: "pagesCollapseAuth",
+                                "aria-labelledby": "headingOne",
+                                "data-parent": "#sidenavAccordionPages"
+                              }
+                            },
+                            [
+                              _c(
+                                "nav",
+                                { staticClass: "sb-sidenav-menu-nested nav" },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "login.html" }
+                                    },
+                                    [_vm._v("Login")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "register.html" }
+                                    },
+                                    [_vm._v("Register")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "password.html" }
+                                    },
+                                    [_vm._v("Forgot Password")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "nav-link collapsed",
+                              attrs: {
+                                href: "#",
+                                "data-toggle": "collapse",
+                                "data-target": "#pagesCollapseError",
+                                "aria-expanded": "false",
+                                "aria-controls": "pagesCollapseError"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Error\n                                    "
+                              ),
+                              _c(
+                                "div",
+                                { staticClass: "sb-sidenav-collapse-arrow" },
+                                [_c("i", { staticClass: "fas fa-angle-down" })]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "collapse",
+                              attrs: {
+                                id: "pagesCollapseError",
+                                "aria-labelledby": "headingOne",
+                                "data-parent": "#sidenavAccordionPages"
+                              }
+                            },
+                            [
+                              _c(
+                                "nav",
+                                { staticClass: "sb-sidenav-menu-nested nav" },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "401.html" }
+                                    },
+                                    [_vm._v("401 Page")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "404.html" }
+                                    },
+                                    [_vm._v("404 Page")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "nav-link",
+                                      attrs: { href: "500.html" }
+                                    },
+                                    [_vm._v("500 Page")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sb-sidenav-menu-heading" }, [
+                    _vm._v("Addons")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "charts.html" } },
+                    [
+                      _c("div", { staticClass: "sb-nav-link-icon" }, [
+                        _c("i", { staticClass: "fas fa-chart-area" })
+                      ]),
+                      _vm._v(
+                        "\n                            Charts\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "tables.html" } },
+                    [
+                      _c("div", { staticClass: "sb-nav-link-icon" }, [
+                        _c("i", { staticClass: "fas fa-table" })
+                      ]),
+                      _vm._v(
+                        "\n                            Tables\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sb-sidenav-footer" }, [
+                _c("div", { staticClass: "small" }, [_vm._v("Logged in as:")]),
+                _vm._v(
+                  "\n                    Start Bootstrap\n                "
+                )
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "layoutSidenav_content" } }, [
+          _c("main", [
+            _c("div", { staticClass: "container-fluid" }, [
+              _c("h1", { staticClass: "mt-4" }, [_vm._v("Dashboard")]),
+              _vm._v(" "),
+              _c("ol", { staticClass: "breadcrumb mb-4" }, [
+                _c("li", { staticClass: "breadcrumb-item active" }, [
+                  _vm._v("Dashboard")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "card bg-primary text-white mb-4" },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm._v("Primary Card")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "card-footer d-flex align-items-center justify-content-between"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "small text-white stretched-link",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View Details")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "small text-white" }, [
+                            _c("i", { staticClass: "fas fa-angle-right" })
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "card bg-warning text-white mb-4" },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm._v("Warning Card")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "card-footer d-flex align-items-center justify-content-between"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "small text-white stretched-link",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View Details")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "small text-white" }, [
+                            _c("i", { staticClass: "fas fa-angle-right" })
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "card bg-success text-white mb-4" },
+                    [
+                      _c("div", { staticClass: "card-body" }, [
+                        _vm._v("Success Card")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "card-footer d-flex align-items-center justify-content-between"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "small text-white stretched-link",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("View Details")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "small text-white" }, [
+                            _c("i", { staticClass: "fas fa-angle-right" })
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xl-3 col-md-6" }, [
+                  _c("div", { staticClass: "card bg-danger text-white mb-4" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _vm._v("Danger Card")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex align-items-center justify-content-between"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "small text-white stretched-link",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("View Details")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "small text-white" }, [
+                          _c("i", { staticClass: "fas fa-angle-right" })
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-xl-6" }, [
+                  _c("div", { staticClass: "card mb-4" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("i", { staticClass: "fas fa-chart-area mr-1" }),
+                      _vm._v(
+                        "\n                                    Area Chart Example\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("canvas", {
+                        attrs: {
+                          id: "myAreaChart",
+                          width: "100%",
+                          height: "40"
+                        }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xl-6" }, [
+                  _c("div", { staticClass: "card mb-4" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _c("i", { staticClass: "fas fa-chart-bar mr-1" }),
+                      _vm._v(
+                        "\n                                    Bar Chart Example\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("canvas", {
+                        attrs: { id: "myBarChart", width: "100%", height: "40" }
+                      })
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card mb-4" }, [
+                _c("div", { staticClass: "card-header" }, [
+                  _c("i", { staticClass: "fas fa-table mr-1" }),
+                  _vm._v(
+                    "\n                            DataTable Example\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      {
+                        staticClass: "table table-bordered",
+                        attrs: {
+                          id: "dataTable",
+                          width: "100%",
+                          cellspacing: "0"
+                        }
+                      },
+                      [
+                        _c("thead", [
+                          _c("tr", [
+                            _c("th", [_vm._v("Name")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Position")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Office")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Age")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Start date")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Salary")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tfoot", [
+                          _c("tr", [
+                            _c("th", [_vm._v("Name")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Position")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Office")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Age")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Start date")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Salary")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", [_vm._v("Tiger Nixon")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("System Architect")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("61")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$320,800")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Garrett Winters")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Accountant")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Tokyo")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("63")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/07/25")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$170,750")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Ashton Cox")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Junior Technical Author")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("66")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/01/12")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$86,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Cedric Kelly")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Senior Javascript Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("22")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/03/29")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$433,060")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Airi Satou")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Accountant")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Tokyo")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("33")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/11/28")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$162,700")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Brielle Williamson")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Integration Specialist")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("61")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/12/02")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$372,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Herrod Chandler")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Sales Assistant")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("59")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/08/06")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$137,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Rhona Davidson")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Integration Specialist")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Tokyo")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("55")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/10/14")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$327,900")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Colleen Hurst")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Javascript Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("39")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/09/15")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$205,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Sonya Frost")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("23")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/12/13")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$103,600")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jena Gaines")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Office Manager")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("30")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/12/19")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$90,560")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Quinn Flynn")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Support Lead")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("22")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2013/03/03")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$342,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Charde Marshall")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("36")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/10/16")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$470,600")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Haley Kennedy")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Senior Marketing Designer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("43")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/12/18")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$313,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Tatyana Fitzpatrick")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("19")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/03/17")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$385,750")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Michael Silva")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Marketing Designer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("66")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/11/27")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$198,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Paul Byrd")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Chief Financial Officer (CFO)")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("64")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/06/09")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$725,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Gloria Little")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Systems Administrator")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("59")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/04/10")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$237,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Bradley Greer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("41")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/10/13")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$132,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Dai Rios")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Personnel Lead")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("35")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/09/26")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$217,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jenette Caldwell")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Development Lead")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("30")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/09/03")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$345,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Yuri Berry")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Chief Marketing Officer (CMO)")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("40")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/06/25")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$675,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Caesar Vance")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Pre-Sales Support")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("21")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/12/12")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$106,450")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Doris Wilder")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Sales Assistant")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Sidney")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("23")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/09/20")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$85,600")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Angelica Ramos")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Chief Executive Officer (CEO)")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("47")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/10/09")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$1,200,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Gavin Joyce")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("42")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/12/22")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$92,575")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jennifer Chang")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Singapore")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("28")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/11/14")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$357,650")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Brenden Wagner")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("28")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/06/07")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$206,850")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Fiona Green")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Chief Operating Officer (COO)")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("48")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/03/11")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$850,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Shou Itou")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Marketing")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Tokyo")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("20")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/08/14")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$163,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Michelle House")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Integration Specialist")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Sidney")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("37")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/06/02")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$95,400")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Suki Burks")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("53")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/10/22")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$114,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Prescott Bartlett")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Technical Author")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("27")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/05/07")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$145,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Gavin Cortez")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Team Leader")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("22")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/10/26")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$235,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Martena Mccray")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Post-Sales support")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("46")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/03/09")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$324,050")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Unity Butler")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Marketing Designer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("47")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/12/09")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$85,675")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Howard Hatfield")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Office Manager")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("51")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/12/16")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$164,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Hope Fuentes")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Secretary")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("41")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/02/12")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$109,850")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Vivian Harrell")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Financial Controller")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("62")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/02/14")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$452,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Timothy Mooney")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Office Manager")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("37")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/12/11")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$136,200")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jackson Bradshaw")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("65")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/09/26")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$645,750")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Olivia Liang")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Support Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Singapore")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("64")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/02/03")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$234,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Bruno Nash")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("38")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/05/03")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$163,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Sakura Yamamoto")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Support Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Tokyo")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("37")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/08/19")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$139,575")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Thor Walton")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("61")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2013/08/11")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$98,540")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Finn Camacho")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Support Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("47")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/07/07")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$87,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Serge Baldwin")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Data Coordinator")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Singapore")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("64")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/09")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$138,575")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Zenaida Frank")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("63")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/01/04")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$125,250")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Zorita Serrano")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Software Engineer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("56")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/06/01")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$115,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jennifer Acosta")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Junior Javascript Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("43")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2013/02/01")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$75,650")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Cara Stevens")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Sales Assistant")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("46")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/12/06")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$145,600")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Hermione Butler")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("47")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/03/21")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$356,250")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Lael Greer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Systems Administrator")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("London")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("21")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2009/02/27")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$103,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jonas Alexander")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("San Francisco")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("30")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2010/07/14")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$86,500")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Shad Decker")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Regional Director")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Edinburgh")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("51")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2008/11/13")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$183,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Michael Bruce")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Javascript Developer")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Singapore")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("29")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/06/27")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$183,000")])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Donna Snider")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("Customer Support")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("New York")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("27")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2011/01/25")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("$112,000")])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "py-4 bg-light mt-auto" }, [
+            _c("div", { staticClass: "container-fluid" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex align-items-center justify-content-between small"
+                },
+                [
+                  _c("div", { staticClass: "text-muted" }, [
+                    _vm._v("Copyright © Your Website 2020")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Privacy Policy")
+                    ]),
+                    _vm._v(
+                      "\n                            ·\n                            "
+                    ),
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Terms & Conditions")
+                    ])
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
