@@ -7374,7 +7374,7 @@ button.bg-dark:focus {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 1000;
 }
 
 .fixed-bottom {
@@ -10086,7 +10086,7 @@ body {
   }
 }
 .sb-nav-fixed .sb-topnav {
-  z-index: 1039;
+  z-index: 1000;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
   width: 225px;
@@ -10129,7 +10129,7 @@ body {
 .sb-topnav {
   padding-left: 0;
   height: 56px;
-  z-index: 1039;
+  z-index: 1000;
 }
 .sb-topnav .navbar-brand {
   width: 225px;
