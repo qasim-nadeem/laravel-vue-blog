@@ -37,4 +37,9 @@ class TagsController extends BaseController
     {
         return $this->service->editTag($request->input('tagName'),$request->input('id'));
     }
+
+    public function removeTag(Request $request)
+    {
+        return $this->service->removeTag($request->input('id'));
+    }
 }

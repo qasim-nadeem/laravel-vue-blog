@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/admin/tag/create', [\App\Http\Controllers\Admin\TagsController::class,'createTag'])->name('tag.create');
 Route::post('/admin/tag/edit', [\App\Http\Controllers\Admin\TagsController::class,'editTag'])->name('tag.edit');
+Route::post('/admin/tag/remove', [\App\Http\Controllers\Admin\TagsController::class,'removeTag'])->name('tag.remove');
 Route::get('/admin/tag/all', [\App\Http\Controllers\Admin\TagsController::class,'tags'])->name('tag.all');
 
 Route::any('/', function () {

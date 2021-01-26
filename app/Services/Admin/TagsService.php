@@ -17,4 +17,11 @@ class TagsService
         $tag = Tag::where('id',$id)->first()->update(['tagName' => $name]);
         return $tag;
     }
+
+    public function removeTag($id)
+    {
+        $tag = Tag::find($id);
+        $tag->delete();
+        return true;
+    }
 }

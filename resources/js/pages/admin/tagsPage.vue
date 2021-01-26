@@ -37,6 +37,7 @@
                               <td>{{tag.created_at}}</td>
                               <td>
                                   <Button type="info" @click="loadEditTagModal(tag.tagName,tag.id,i)">Edit</Button>
+                                  <Button type="error" @click="loadDeleteTagModal(tag.id,i)">remove</Button>
                               </td>
                           </tr>
                         <tr v-if="!tags.length">
@@ -59,7 +60,20 @@
           <Input v-model="dataEditable.tagName" placeholder="Enter Tag Name Here ...." style="width: 100%" />
           <div slot="footer">
               <Button type="error" @click="cancelModal">Cancel</Button>
-              <Button type="error" @click="editTag()" :loading="isEdting">{{ isEdting ? 'updating...' : 'Add Tag'}}</Button>
+              <Button type="error" @click="editTag()" :loading="isEdting">{{ isEdting ? 'updating...' : 'Update Tag'}}</Button>
+          </div>
+      </Modal>
+      <Modal v-model="deleteTagModal" width="360" :mask-closable="false">
+          <p slot="header" style="color:#f60;text-align:center">
+              <Icon type="ios-information-circle" @click="closeDeleteModal()"></Icon>
+              <span>Tag Remove confirmation</span>
+          </p>
+          <div style="text-align:center">
+              <p>You are removing a tag.</p>
+              <p>Will you remove it?</p>
+          </div>
+          <div slot="footer">
+              <Button type="error" size="large" long :loading="isDeleting" @click="removeTag()">Remove</Button>
           </div>
       </Modal>
   </div>
@@ -71,8 +85,10 @@ export default{
     return {
       tagModal:false,
       editTagModal:false,
+      deleteTagModal:false,
       isAdding: false,
       isEdting: false,
+      isDeleting: false,
       tags:[],
       data:{
         tagName:'',
@@ -130,6 +146,32 @@ export default{
               this.isEdting = false;
               this.editKey = 0;
           }
+      },
+      async removeTag(){
+        this.isDeleting = true;
+          const res =  await this.callApi(
+              'post',
+              '/admin/tag/remove',
+              this.dataEditable
+          );
+          if(res.status === 200){
+              this.tags.splice(this.dataEditable.key,1);
+              this.deleteTagModal = false;
+              this.success('Greate!!!','Tag removed successfully.');
+          } else {
+              this.error('Oppss!!!', 'Something went wrong, unable to remove.');
+          }
+          this.dataEditable = '';
+          this.deleteTagModal = false;
+          this.isDeleting = false;
+      },
+      closeDeleteModal(){
+        this.dataEditable = '';
+        this.deleteTagModal = false;
+      },
+      loadDeleteTagModal(id,key){
+        this.dataEditable = {id: id,key:key};
+        this.deleteTagModal = true;
       },
       loadEditTagModal(tagName,id,key) {
         this.dataEditable = {tagName:tagName,id:id};
