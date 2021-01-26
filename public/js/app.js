@@ -1924,20 +1924,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       tagModal: false,
+      editTagModal: false,
       isAdding: false,
+      isEdting: false,
       tags: [],
       data: {
         tagName: ''
-      }
+      },
+      dataEditable: {
+        tagName: ''
+      },
+      editKey: 0
     };
   },
   methods: {
     cancelModal: function cancelModal() {
-      this.tagModal = false;
+      if (this.tagModal) this.tagModal = false;else if (this.editTagModal) this.editTagModal = false;
     },
     addNewTag: function addNewTag() {
       var _this = this;
@@ -1986,34 +1999,89 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    editTag: function editTag() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.isEdting = true;
+
+                if (!(_this2.dataEditable.tagName === '')) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                _this2.error('Opps!!!', 'Please write Tag Name.');
+
+                _this2.isEdting = false;
+                _context2.next = 12;
+                break;
+
+              case 6:
+                _context2.next = 8;
+                return _this2.callApi('post', '/admin/tag/edit', _this2.dataEditable);
+
+              case 8:
+                res = _context2.sent;
+
+                if (res.status === 200) {
+                  _this2.tags[_this2.editKey].tagName = _this2.dataEditable.tagName;
+                  _this2.dataEditable.tagName = '';
+                  _this2.editTagModal = false;
+
+                  _this2.success('Greate!!!', 'Tag updated successfully.');
+                }
+
+                _this2.isEdting = false;
+                _this2.editKey = 0;
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    loadEditTagModal: function loadEditTagModal(tagName, id, key) {
+      this.dataEditable = {
+        tagName: tagName,
+        id: id
+      };
+      this.editKey = key;
+      this.editTagModal = true;
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
-              _context2.next = 2;
-              return _this2.callApi('get', '/admin/tag/all');
+              _context3.next = 2;
+              return _this3.callApi('get', '/admin/tag/all');
 
             case 2:
-              res = _context2.sent;
+              res = _context3.sent;
 
               if (res.status === 200) {
-                _this2.tags = res.data;
-                console.log(res.data);
+                _this3.tags = res.data;
               }
 
             case 4:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2);
+      }, _callee3);
     }))();
   }
 });
@@ -67556,9 +67624,22 @@ var render = function() {
                             _c(
                               "td",
                               [
-                                _c("Button", { attrs: { type: "error" } }, [
-                                  _vm._v("remove")
-                                ])
+                                _c(
+                                  "Button",
+                                  {
+                                    attrs: { type: "info" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.loadEditTagModal(
+                                          tag.tagName,
+                                          tag.id,
+                                          i
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Edit")]
+                                )
                               ],
                               1
                             )
@@ -67633,6 +67714,60 @@ var render = function() {
                   on: { click: _vm.addNewTag }
                 },
                 [_vm._v(_vm._s(_vm.isAdding ? "Adding..." : "Add Tag"))]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "Modal",
+        {
+          attrs: { title: "Edit Tag", "mask-closable": false, closable: false },
+          model: {
+            value: _vm.editTagModal,
+            callback: function($$v) {
+              _vm.editTagModal = $$v
+            },
+            expression: "editTagModal"
+          }
+        },
+        [
+          _c("Input", {
+            staticStyle: { width: "100%" },
+            attrs: { placeholder: "Enter Tag Name Here ...." },
+            model: {
+              value: _vm.dataEditable.tagName,
+              callback: function($$v) {
+                _vm.$set(_vm.dataEditable, "tagName", $$v)
+              },
+              expression: "dataEditable.tagName"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { attrs: { slot: "footer" }, slot: "footer" },
+            [
+              _c(
+                "Button",
+                { attrs: { type: "error" }, on: { click: _vm.cancelModal } },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "Button",
+                {
+                  attrs: { type: "error", loading: _vm.isEdting },
+                  on: {
+                    click: function($event) {
+                      return _vm.editTag()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.isEdting ? "updating..." : "Add Tag"))]
               )
             ],
             1

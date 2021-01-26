@@ -36,7 +36,7 @@
                               <td>{{tag.tagName}}</td>
                               <td>{{tag.created_at}}</td>
                               <td>
-                                  <Button type="error">remove</Button>
+                                  <Button type="info" @click="loadEditTagModal(tag.tagName,tag.id,i)">Edit</Button>
                               </td>
                           </tr>
                         <tr v-if="!tags.length">
@@ -55,6 +55,13 @@
             <Button type="error" @click="addNewTag" :loading="isAdding">{{ isAdding ? 'Adding...' : 'Add Tag'}}</Button>
         </div>
     </Modal>
+      <Modal v-model="editTagModal" title="Edit Tag" :mask-closable="false" :closable="false">
+          <Input v-model="dataEditable.tagName" placeholder="Enter Tag Name Here ...." style="width: 100%" />
+          <div slot="footer">
+              <Button type="error" @click="cancelModal">Cancel</Button>
+              <Button type="error" @click="editTag()" :loading="isEdting">{{ isEdting ? 'updating...' : 'Add Tag'}}</Button>
+          </div>
+      </Modal>
   </div>
 </template>
 
@@ -63,16 +70,25 @@ export default{
   data(){
     return {
       tagModal:false,
+      editTagModal:false,
       isAdding: false,
+      isEdting: false,
       tags:[],
       data:{
         tagName:'',
       },
+        dataEditable:{
+            tagName:'',
+        },
+        editKey: 0,
     }
   },
   methods:{
     cancelModal(){
-      this.tagModal = false;
+        if(this.tagModal)
+            this.tagModal = false;
+        else if(this.editTagModal)
+            this.editTagModal = false;
     },
     async addNewTag(){
         this.isAdding = true;
@@ -93,7 +109,33 @@ export default{
             }
             this.isAdding = false;
         }
-    }
+    },
+      async editTag(){
+          this.isEdting = true;
+          if(this.dataEditable.tagName === '') {
+              this.error('Opps!!!','Please write Tag Name.');
+              this.isEdting = false;
+          } else {
+              const res =  await this.callApi(
+                  'post',
+                  '/admin/tag/edit',
+                  this.dataEditable
+              );
+              if(res.status === 200) {
+                  this.tags[this.editKey].tagName = this.dataEditable.tagName;
+                  this.dataEditable.tagName = '';
+                  this.editTagModal = false;
+                  this.success('Greate!!!','Tag updated successfully.');
+              }
+              this.isEdting = false;
+              this.editKey = 0;
+          }
+      },
+      loadEditTagModal(tagName,id,key) {
+        this.dataEditable = {tagName:tagName,id:id};
+        this.editKey = key;
+        this.editTagModal = true;
+      },
   },
   async created(){
     const res =  await this.callApi('get','/admin/tag/all');

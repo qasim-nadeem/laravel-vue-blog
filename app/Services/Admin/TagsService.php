@@ -11,4 +11,10 @@ class TagsService
     {
         return Tag::create(['tagName' => $name]);
     }
+
+    public function editTag($name, $id)
+    {
+        $tag = Tag::where('id',$id)->first()->update(['tagName' => $name]);
+        return $tag;
+    }
 }
