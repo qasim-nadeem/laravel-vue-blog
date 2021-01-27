@@ -8,6 +8,7 @@ import loopcondition from "./pages/loopcondition";
 
 // larvel vue blog app admin pages
 import tagsPage from "./pages/admin/tagsPage.vue";
+import categoryPage from "./pages/admin/categoryPage.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,11 @@ export default new VueRouter({
             path: '/tags',
             name:'tags',
             component: tagsPage
+        },
+        {
+            path: '/categories',
+            name:'categories',
+            component: categoryPage
         },
         {
             path: '/blog',

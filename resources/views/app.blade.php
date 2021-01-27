@@ -25,6 +25,15 @@
       font-style: normal;
     }
     </style>
+    <script>
+
+        (function () {
+            window.Laravel = {
+                csrfToken: '{{ csrf_token() }}'
+            };
+        })();
+
+    </script>
 </head>
 <body>
     <div id="app">
