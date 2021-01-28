@@ -1926,6 +1926,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1949,7 +1960,26 @@ __webpack_require__.r(__webpack_exports__);
     cancelAddCategoryModal: function cancelAddCategoryModal() {
       this.addCategoryModal = false;
     },
-    addNewCategory: function addNewCategory() {}
+    addNewCategory: function addNewCategory() {},
+    handleImageError: function handleImageError(res, file) {
+      this.error('Oppsss!!!', file.errors.file.length ? file.errors.file[0] : 'Something went wrong.');
+    },
+    handleImageMaxSize: function handleImageMaxSize(file) {
+      this.error('Oppsss!!!', 'Image size must be max 2MB');
+    },
+    handleImageFormatError: function handleImageFormatError(file) {
+      this.error('Oppsss!!!', 'Image format not supported, must use, jpeg,jpg,png');
+    },
+    handleImageSuccess: function handleImageSuccess(res, file) {
+      this.data.category.iconImage = res;
+      console.log(this.data.category.iconImage);
+      this.success('Great!!!', 'Image uploaded successfully.');
+    },
+    onImageRemove: function onImageRemove(file, filelist) {
+      //make api call here to remove image from server too.
+      console.log(file);
+      this.data.category.iconImage = null;
+    }
   },
   created: function created() {
     this.token = window.Laravel.csrfToken;
@@ -67695,7 +67725,17 @@ var render = function() {
                 multiple: "",
                 type: "drag",
                 action: "admin/category/image/upload",
-                headers: { "x-csrf-token": _vm.token }
+                headers: {
+                  "x-csrf-token": _vm.token,
+                  "X-requested-with": "XMLHttpRequest"
+                },
+                "on-success": _vm.handleImageSuccess,
+                format: ["jpg", "jpeg", "png"],
+                "on-format-error": _vm.handleImageFormatError,
+                "max-size": 2048,
+                "on-exceeded-size": _vm.handleImageMaxSize,
+                "on-error": _vm.handleImageError,
+                "on-remove": _vm.onImageRemove
               }
             },
             [
@@ -67714,6 +67754,17 @@ var render = function() {
               )
             ]
           ),
+          _vm._v(" "),
+          _vm.data.category.iconImage
+            ? _c("div", [
+                _c("img", {
+                  attrs: {
+                    src: "uploads/category/" + _vm.data.category.iconImage,
+                    width: "100%"
+                  }
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",

@@ -29,6 +29,9 @@ class UploadsController extends Controller
      */
     public function uploadCategoryImage(Request $request)
     {
+        $request->validate([
+            'file' => 'required|mimes:jpeg,jpg,png',
+        ]);
         return $this->service->uploadCategoryImage($request->file);
     }
 }
