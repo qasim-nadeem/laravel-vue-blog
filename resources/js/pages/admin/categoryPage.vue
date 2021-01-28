@@ -100,8 +100,18 @@ export default{
       }
     },
     methods:{
-        cancelAddCategoryModal(){
-          this.addCategoryModal = false;
+        async cancelAddCategoryModal(){
+            if(this.data.category.iconImage) { //close modal and remove image if user has uploaded one
+                let res = await this.callApi('post', '/admin/category/image/remove',
+                    {file: this.data.category.iconImage});
+                if (res.status === 200) {
+                    this.data.category.iconImage = null;
+                    this.info('Success', 'File removed successfully.')
+                } else {
+                    this.error('Oppss!!!', 'Unable to remove uploaded file from server.')
+                }
+            }
+            this.addCategoryModal = false;
         },
         addNewCategory(){
 
@@ -117,13 +127,16 @@ export default{
         },
         handleImageSuccess(res,file){
             this.data.category.iconImage = res;
-            console.log(this.data.category.iconImage);
             this.success('Great!!!', 'Image uploaded successfully.')
         },
-        onImageRemove(file,filelist){
-            //make api call here to remove image from server too.
-            console.log(file);
-            this.data.category.iconImage = null;
+        async onImageRemove(file,filelist){
+            let res = await this.callApi('post','/admin/category/image/remove',{file:file.response});
+            if(res.status === 200) {
+                this.data.category.iconImage = null;
+                this.info('Success', 'File removed successfully.')
+            } else {
+                this.error('Oppss!!!','Unable to remove uploaded file from server.')
+            }
         },
     },
     created(){

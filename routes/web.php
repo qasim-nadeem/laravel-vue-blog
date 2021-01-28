@@ -23,6 +23,8 @@ Route::get('/admin/tag/all', [\App\Http\Controllers\Admin\TagsController::class,
  */
 Route::post('/admin/category/image/upload', [\App\Http\Controllers\Admin\UploadsController::class, 'uploadCategoryImage'])
     ->name('category.image.upload');
+Route::post('/admin/category/image/remove', [\App\Http\Controllers\Admin\UploadsController::class, 'removeImage'])
+    ->name('category.image.remove');
 
 Route::any('/', function () {
     return view('app');

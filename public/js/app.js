@@ -1856,6 +1856,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -1958,7 +1966,45 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     cancelAddCategoryModal: function cancelAddCategoryModal() {
-      this.addCategoryModal = false;
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!_this.data.category.iconImage) {
+                  _context.next = 5;
+                  break;
+                }
+
+                _context.next = 3;
+                return _this.callApi('post', '/admin/category/image/remove', {
+                  file: _this.data.category.iconImage
+                });
+
+              case 3:
+                res = _context.sent;
+
+                if (res.status === 200) {
+                  _this.data.category.iconImage = null;
+
+                  _this.info('Success', 'File removed successfully.');
+                } else {
+                  _this.error('Oppss!!!', 'Unable to remove uploaded file from server.');
+                }
+
+              case 5:
+                _this.addCategoryModal = false;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     addNewCategory: function addNewCategory() {},
     handleImageError: function handleImageError(res, file) {
@@ -1972,13 +2018,40 @@ __webpack_require__.r(__webpack_exports__);
     },
     handleImageSuccess: function handleImageSuccess(res, file) {
       this.data.category.iconImage = res;
-      console.log(this.data.category.iconImage);
       this.success('Great!!!', 'Image uploaded successfully.');
     },
     onImageRemove: function onImageRemove(file, filelist) {
-      //make api call here to remove image from server too.
-      console.log(file);
-      this.data.category.iconImage = null;
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.callApi('post', '/admin/category/image/remove', {
+                  file: file.response
+                });
+
+              case 2:
+                res = _context2.sent;
+
+                if (res.status === 200) {
+                  _this2.data.category.iconImage = null;
+
+                  _this2.info('Success', 'File removed successfully.');
+                } else {
+                  _this2.error('Oppss!!!', 'Unable to remove uploaded file from server.');
+                }
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   created: function created() {

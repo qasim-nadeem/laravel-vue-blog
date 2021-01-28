@@ -3,6 +3,8 @@
 
 namespace App\Services\Admin;
 
+use Illuminate\Support\Facades\File;
+
 class UploadsService
 {
     public function uploadCategoryImage($file)
@@ -14,5 +16,10 @@ class UploadsService
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    public function removeImage($path,$fileName){
+        File::delete($path.'/'.$fileName);
+        return true;
     }
 }

@@ -34,4 +34,9 @@ class UploadsController extends Controller
         ]);
         return $this->service->uploadCategoryImage($request->file);
     }
+
+    public function removeImage(Request $request)
+    {
+        return $this->service->removeImage(public_path('uploads/category'),$request->file);
+    }
 }
