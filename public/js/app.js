@@ -1945,6 +1945,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1953,7 +1956,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         category: {
           categoryName: '',
           iconImage: ''
-        }
+        },
+        categories: []
       },
       addCategoryModal: false,
       editCategoryModal: false,
@@ -2006,7 +2010,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    addNewCategory: function addNewCategory() {},
+    addNewCategory: function addNewCategory() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!(_this2.data.category.categoryName.trim() === '' || _this2.data.category.iconImage.trim() === '')) {
+                  _context2.next = 4;
+                  break;
+                }
+
+                _this2.warning('Somethings missing', 'Category title, or image is missing.');
+
+                _context2.next = 8;
+                break;
+
+              case 4:
+                _context2.next = 6;
+                return _this2.callApi('post', '/admin/category/create', _this2.data.category);
+
+              case 6:
+                res = _context2.sent;
+
+                if (res.status === 201) {
+                  _this2.success('Great!!!', 'Category created successfully.');
+
+                  _this2.data.categories.unshift({
+                    id: res.data.id,
+                    iconImage: res.data.iconImage,
+                    categoryName: res.data.categoryName,
+                    created_at: res.data.created_at
+                  });
+
+                  _this2.data.category.categoryName = '';
+                  _this2.data.category.iconImage = '';
+                  _this2.addCategoryModal = false;
+
+                  _this2.$refs.upload.clearFiles();
+                } else {
+                  _this2.error('Opps!!!', 'Unable to create, something went wrong.');
+                }
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
     handleImageError: function handleImageError(res, file) {
       this.error('Oppsss!!!', file.errors.file.length ? file.errors.file[0] : 'Something went wrong.');
     },
@@ -2021,41 +2077,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.success('Great!!!', 'Image uploaded successfully.');
     },
     onImageRemove: function onImageRemove(file, filelist) {
-      var _this2 = this;
+      var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.next = 2;
-                return _this2.callApi('post', '/admin/category/image/remove', {
+                _context3.next = 2;
+                return _this3.callApi('post', '/admin/category/image/remove', {
                   file: file.response
                 });
 
               case 2:
-                res = _context2.sent;
+                res = _context3.sent;
 
                 if (res.status === 200) {
-                  _this2.data.category.iconImage = null;
+                  _this3.data.category.iconImage = null;
 
-                  _this2.info('Success', 'File removed successfully.');
+                  _this3.info('Success', 'File removed successfully.');
+
+                  _this3.$refs.upload.clearFiles();
                 } else {
-                  _this2.error('Oppss!!!', 'Unable to remove uploaded file from server.');
+                  _this3.error('Oppss!!!', 'Unable to remove uploaded file from server.');
                 }
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     }
   },
   created: function created() {
-    this.token = window.Laravel.csrfToken;
+    var _this4 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _this4.token = window.Laravel.csrfToken;
+              _context4.next = 3;
+              return _this4.callApi('get', '/admin/category/all');
+
+            case 3:
+              res = _context4.sent;
+              console.log(res);
+
+              if (res.status === 200) {
+                _this4.data.categories = res.data;
+              }
+
+            case 6:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
   }
 });
 
@@ -67703,7 +67787,7 @@ var render = function() {
       _c("div", { staticClass: "card mb-4" }, [
         _c("div", { staticClass: "card-header" }, [
           _c("i", { staticClass: "fas fa-table mr-1" }),
-          _vm._v("\n                Categories List "),
+          _vm._v("\n            Categories List "),
           _c(
             "button",
             {
@@ -67731,29 +67815,58 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(2),
                 _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [_vm._v("test")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("test")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("test")]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c("Button", { attrs: { type: "info" } }, [
-                          _vm._v("Edit")
+                _c(
+                  "tbody",
+                  [
+                    _vm._l(_vm.data.categories, function(category, i) {
+                      return _c("tr", { key: i }, [
+                        _c("td", [_vm._v(_vm._s(category.id))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("img", {
+                            attrs: {
+                              src: "uploads/category/" + category.iconImage,
+                              height: "30",
+                              width: "30"
+                            }
+                          })
                         ]),
                         _vm._v(" "),
-                        _c("Button", { attrs: { type: "error" } }, [
-                          _vm._v("remove")
+                        _c("td", [_vm._v(_vm._s(category.iconImage))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(category.created_at))]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("Button", { attrs: { type: "info" } }, [
+                              _vm._v("Edit")
+                            ]),
+                            _vm._v(" "),
+                            _c("Button", { attrs: { type: "error" } }, [
+                              _vm._v("remove")
+                            ])
+                          ],
+                          1
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    !_vm.data.categories.length
+                      ? _c("tr", [
+                          _c(
+                            "td",
+                            {
+                              staticClass: "text-center",
+                              attrs: { colspan: "4" }
+                            },
+                            [_vm._v("Loading....")]
+                          )
                         ])
-                      ],
-                      1
-                    )
-                  ])
-                ])
+                      : _vm._e()
+                  ],
+                  2
+                )
               ]
             )
           ])
@@ -67777,15 +67890,25 @@ var render = function() {
           }
         },
         [
-          _c("Input", {
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.category.categoryName,
+                expression: "data.category.categoryName"
+              }
+            ],
             staticStyle: { width: "100%" },
             attrs: { placeholder: "Enter Category Name Here ...." },
-            model: {
-              value: _vm.data.category.categoryName,
-              callback: function($$v) {
-                _vm.$set(_vm.data.category, "categoryName", $$v)
-              },
-              expression: "data.category.categoryName"
+            domProps: { value: _vm.data.category.categoryName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.data.category, "categoryName", $event.target.value)
+              }
             }
           }),
           _vm._v(" "),
@@ -67893,9 +68016,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Id")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Icon Image")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Created At")]),
+        _c("th", [_vm._v("Category Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Created")]),
         _vm._v(" "),
         _c("th", [_vm._v("Options")])
       ])
@@ -67909,9 +68034,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Id")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Icon Image")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Created At")]),
+        _c("th", [_vm._v("Category Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Created")]),
         _vm._v(" "),
         _c("th", [_vm._v("Options")])
       ])

@@ -25,6 +25,10 @@ Route::post('/admin/category/image/upload', [\App\Http\Controllers\Admin\Uploads
     ->name('category.image.upload');
 Route::post('/admin/category/image/remove', [\App\Http\Controllers\Admin\UploadsController::class, 'removeImage'])
     ->name('category.image.remove');
+Route::post('/admin/category/create', [\App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])
+    ->name('category.create');
+Route::get('/admin/category/all', [\App\Http\Controllers\Admin\CategoryController::class, 'categories'])
+    ->name('category.all');
 
 Route::any('/', function () {
     return view('app');

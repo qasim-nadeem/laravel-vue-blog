@@ -17,32 +17,35 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Created At</th>
+                            <th>Icon Image</th>
+                            <th>Category Name</th>
+                            <th>Created</th>
                             <th>Options</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Created At</th>
+                            <th>Icon Image</th>
+                            <th>Category Name</th>
+                            <th>Created</th>
                             <th>Options</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
+                        <tr v-for="(category, i) in data.categories" :key="i">
+                            <td>{{ category.id }}</td>
+                            <td><img :src="`uploads/category/${category.iconImage}`" height="30" width="30"></td>
+                            <td>{{ category.iconImage }}</td>
+                            <td>{{ category.created_at }}</td>
                             <td>
                                 <Button type="info" >Edit</Button>
                                 <Button type="error" >remove</Button>
                             </td>
                         </tr>
-<!--                        <tr v-if="!tags.length">-->
-<!--                            <td colspan="4" class="text-center">Id</td>-->
-<!--                        </tr>-->
+                        <tr v-if="!data.categories.length">
+                            <td colspan="4" class="text-center">Loading....</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +53,7 @@
         </div>
         <!-- Modal -->
         <Modal v-model="addCategoryModal" title="Add New Category" :mask-closable="false" :closable="false">
-            <Input v-model="data.category.categoryName" placeholder="Enter Category Name Here ...." style="width: 100%" />
+            <input v-model="data.category.categoryName" placeholder="Enter Category Name Here ...." style="width: 100%" />
             <div class="mt-2"></div>
             <Upload
                 multiple
@@ -89,6 +92,7 @@ export default{
                   categoryName: '',
                   iconImage: '',
               },
+              categories:[],
           },
           addCategoryModal: false,
           editCategoryModal: false,
@@ -113,8 +117,29 @@ export default{
             }
             this.addCategoryModal = false;
         },
-        addNewCategory(){
-
+        async addNewCategory(){
+            if(this.data.category.categoryName.trim() === '' || this.data.category.iconImage.trim() === '') {
+                this.warning('Somethings missing', 'Category title, or image is missing.')
+            } else {
+                let res = await this.callApi(
+                    'post',
+                    '/admin/category/create', this.data.category);
+                if(res.status === 201) {
+                    this.success('Great!!!', 'Category created successfully.');
+                    this.data.categories.unshift({
+                        id: res.data.id,
+                        iconImage: res.data.iconImage,
+                        categoryName: res.data.categoryName,
+                        created_at: res.data.created_at
+                    });
+                    this.data.category.categoryName = '';
+                    this.data.category.iconImage = '';
+                    this.addCategoryModal = false;
+                    this.$refs.upload.clearFiles();
+                } else {
+                    this.error('Opps!!!', 'Unable to create, something went wrong.');
+                }
+            }
         },
         handleImageError(res,file){
             this.error('Oppsss!!!',file.errors.file.length ? file.errors.file[0] : 'Something went wrong.');
@@ -134,13 +159,19 @@ export default{
             if(res.status === 200) {
                 this.data.category.iconImage = null;
                 this.info('Success', 'File removed successfully.')
+                this.$refs.upload.clearFiles();
             } else {
                 this.error('Oppss!!!','Unable to remove uploaded file from server.')
             }
         },
     },
-    created(){
+    async created(){
         this.token = window.Laravel.csrfToken;
+        let res = await this.callApi('get', '/admin/category/all');
+        console.log(res);
+        if(res.status === 200) {
+            this.data.categories = res.data;
+        }
     },
 }
 </script>
