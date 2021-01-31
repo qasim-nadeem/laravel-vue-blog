@@ -36,10 +36,10 @@
                         <tr v-for="(category, i) in data.categories" :key="i">
                             <td>{{ category.id }}</td>
                             <td><img :src="`uploads/category/${category.iconImage}`" height="30" width="30"></td>
-                            <td>{{ category.iconImage }}</td>
+                            <td>{{ category.categoryName }}</td>
                             <td>{{ category.created_at }}</td>
                             <td>
-                                <Button type="info" >Edit</Button>
+                                <Button type="info" @click="loadEditCategoryModal(category.id,i)">Edit</Button>
                                 <Button type="error" >remove</Button>
                             </td>
                         </tr>
@@ -56,7 +56,7 @@
             <input v-model="data.category.categoryName" placeholder="Enter Category Name Here ...." style="width: 100%" />
             <div class="mt-2"></div>
             <Upload
-                multiple
+                ref="upload"
                 type="drag"
                 action="admin/category/image/upload"
                 :headers="{'x-csrf-token' : token,'X-requested-with' : 'XMLHttpRequest'}"
@@ -80,6 +80,35 @@
                 <Button type="error" @click="addNewCategory" :loading="isAdding">{{ isAdding ? 'Adding...' : 'Add Category'}}</Button>
             </div>
         </Modal>
+        <!-- Modal -->
+        <Modal v-model="editCategoryModal" title="Edit Category" :mask-closable="false" :closable="false">
+            <input v-model="data.category.categoryName" placeholder="Enter Category Name Here ...." style="width: 100%" />
+            <div class="mt-2"></div>
+            <Upload
+                ref="uploadCategoryImage"
+                type="drag"
+                action="admin/category/image/upload"
+                :headers="{'x-csrf-token' : token,'X-requested-with' : 'XMLHttpRequest'}"
+                :on-success="handleImageSuccess"
+                :format="['jpg','jpeg','png']"
+                :on-format-error="handleImageFormatError"
+                :max-size="2048"
+                :on-exceeded-size="handleImageMaxSize"
+                :on-error="handleImageError"
+                :on-remove="onImageRemove">
+                <div style="padding: 20px 0">
+                    <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                    <p>Click or drag image here to upload</p>
+                </div>
+            </Upload>
+            <div v-if="data.category.iconImage">
+                <img :src="`uploads/category/${data.category.iconImage}`" height="50" width="50" />
+            </div>
+            <div slot="footer">
+                <Button type="error" @click="cancelAddCategoryModal">Cancel</Button>
+                <Button type="error" @click="updateCategory" :loading="isAdding">{{ isAdding ? 'Editing...' : 'Edit Category'}}</Button>
+            </div>
+        </Modal>
     </div>
 </template>
 <script>
@@ -91,8 +120,10 @@ export default{
               category: {
                   categoryName: '',
                   iconImage: '',
+                  id: '',
               },
               categories:[],
+              editKey:'',
           },
           addCategoryModal: false,
           editCategoryModal: false,
@@ -105,17 +136,25 @@ export default{
     },
     methods:{
         async cancelAddCategoryModal(){
-            if(this.data.category.iconImage) { //close modal and remove image if user has uploaded one
+            if(this.data.category.iconImage && this.addCategoryModal) { //close modal and remove image if user has uploaded one
                 let res = await this.callApi('post', '/admin/category/image/remove',
                     {file: this.data.category.iconImage});
                 if (res.status === 200) {
-                    this.data.category.iconImage = null;
+                    this.data.category.iconImage = '';
                     this.info('Success', 'File removed successfully.')
                 } else {
                     this.error('Oppss!!!', 'Unable to remove uploaded file from server.')
                 }
+                this.addCategoryModal = false;
+            } else if(this.data.category.iconImage && this.editCategoryModal) {
+                this.editCategoryModal = false;
+            } else if(this.editCategoryModal || this.addCategoryModal) {
+                this.addCategoryModal = false;
+                this.editCategoryModal = false;
             }
-            this.addCategoryModal = false;
+            this.data.category.categoryName = '';
+            this.data.category.iconImage = '';
+            this.$refs.uploadCategoryImage.clearFiles();
         },
         async addNewCategory(){
             if(this.data.category.categoryName.trim() === '' || this.data.category.iconImage.trim() === '') {
@@ -140,6 +179,32 @@ export default{
                     this.error('Opps!!!', 'Unable to create, something went wrong.');
                 }
             }
+        },
+        loadEditCategoryModal(id,key){
+            this.data.category.categoryName = this.data.categories[key].categoryName;
+            this.data.category.id = id;
+            this.data.category.iconImage = this.data.categories[key].iconImage;
+            this.editCategoryModal = true;
+            this.data.editKey = key;
+        },
+       async updateCategory(){
+           if(this.data.category.categoryName.trim() === '' || this.data.category.iconImage.trim() === '') {
+               this.warning('Somethings missing', 'Category title, or image is missing.')
+           } else {
+               let res = await this.callApi(
+                   'post',
+                   '/admin/category/update', this.data.category);
+               if(res.status === 200) {
+                   this.success('Great!!!', 'Category updated successfully.');
+                   this.data.categories[this.data.editKey].categoryName = res.data.categoryName;
+                   this.data.categories[this.data.editKey].iconImage = res.data.iconImage;
+                   this.data.categories[this.data.editKey].id = res.data.id;
+                   this.editCategoryModal = false;
+                   this.$refs.uploadCategoryImage.clearFiles();
+               } else {
+                   this.error('Opps!!!', 'Unable to create, something went wrong.');
+               }
+           }
         },
         handleImageError(res,file){
             this.error('Oppsss!!!',file.errors.file.length ? file.errors.file[0] : 'Something went wrong.');
@@ -168,7 +233,6 @@ export default{
     async created(){
         this.token = window.Laravel.csrfToken;
         let res = await this.callApi('get', '/admin/category/all');
-        console.log(res);
         if(res.status === 200) {
             this.data.categories = res.data;
         }

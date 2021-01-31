@@ -29,6 +29,8 @@ Route::post('/admin/category/create', [\App\Http\Controllers\Admin\CategoryContr
     ->name('category.create');
 Route::get('/admin/category/all', [\App\Http\Controllers\Admin\CategoryController::class, 'categories'])
     ->name('category.all');
+Route::post('/admin/category/update', [\App\Http\Controllers\Admin\CategoryController::class, 'updateCategory'])
+    ->name('category.update');
 
 Route::any('/', function () {
     return view('app');

@@ -34,6 +34,10 @@ class CategoryController extends Controller
         return $this->service->createCategory($request->categoryName,$request->iconImage);
     }
 
+    public function updateCategory(Request $request){
+        return $this->service->updateCategory($request->all());
+    }
+
     public function categories()
     {
         return Category::all();

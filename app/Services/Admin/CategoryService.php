@@ -14,4 +14,17 @@ class CategoryService
             'iconImage' => $iconImage
         ]);
     }
+
+    public function updateCategory(array $category)
+    {
+        $updated = Category::find($category['id'])->update([
+            'iconImage' => $category['iconImage'],
+            'categoryName' => $category['categoryName'],
+        ]);
+        if($updated){
+            return Category::find($category['id']);
+        } else {
+            return fasle;
+        }
+    }
 }

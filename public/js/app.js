@@ -1948,6 +1948,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1955,9 +1984,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         uploadPath: this.basePath + '/admin/category/image/upload',
         category: {
           categoryName: '',
-          iconImage: ''
+          iconImage: '',
+          id: ''
         },
-        categories: []
+        categories: [],
+        editKey: ''
       },
       addCategoryModal: false,
       editCategoryModal: false,
@@ -1978,8 +2009,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!_this.data.category.iconImage) {
-                  _context.next = 5;
+                if (!(_this.data.category.iconImage && _this.addCategoryModal)) {
+                  _context.next = 8;
                   break;
                 }
 
@@ -1992,17 +2023,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context.sent;
 
                 if (res.status === 200) {
-                  _this.data.category.iconImage = null;
+                  _this.data.category.iconImage = '';
 
                   _this.info('Success', 'File removed successfully.');
                 } else {
                   _this.error('Oppss!!!', 'Unable to remove uploaded file from server.');
                 }
 
-              case 5:
                 _this.addCategoryModal = false;
+                _context.next = 9;
+                break;
 
-              case 6:
+              case 8:
+                if (_this.data.category.iconImage && _this.editCategoryModal) {
+                  _this.editCategoryModal = false;
+                } else if (_this.editCategoryModal || _this.addCategoryModal) {
+                  _this.addCategoryModal = false;
+                  _this.editCategoryModal = false;
+                }
+
+              case 9:
+                _this.data.category.categoryName = '';
+                _this.data.category.iconImage = '';
+
+                _this.$refs.uploadCategoryImage.clearFiles();
+
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -2063,6 +2109,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
+    loadEditCategoryModal: function loadEditCategoryModal(id, key) {
+      this.data.category.categoryName = this.data.categories[key].categoryName;
+      this.data.category.id = id;
+      this.data.category.iconImage = this.data.categories[key].iconImage;
+      this.editCategoryModal = true;
+      this.data.editKey = key;
+    },
+    updateCategory: function updateCategory() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!(_this3.data.category.categoryName.trim() === '' || _this3.data.category.iconImage.trim() === '')) {
+                  _context3.next = 4;
+                  break;
+                }
+
+                _this3.warning('Somethings missing', 'Category title, or image is missing.');
+
+                _context3.next = 8;
+                break;
+
+              case 4:
+                _context3.next = 6;
+                return _this3.callApi('post', '/admin/category/update', _this3.data.category);
+
+              case 6:
+                res = _context3.sent;
+
+                if (res.status === 200) {
+                  _this3.success('Great!!!', 'Category updated successfully.');
+
+                  _this3.data.categories[_this3.data.editKey].categoryName = res.data.categoryName;
+                  _this3.data.categories[_this3.data.editKey].iconImage = res.data.iconImage;
+                  _this3.data.categories[_this3.data.editKey].id = res.data.id;
+                  _this3.editCategoryModal = false;
+
+                  _this3.$refs.uploadCategoryImage.clearFiles();
+                } else {
+                  _this3.error('Opps!!!', 'Unable to create, something went wrong.');
+                }
+
+              case 8:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
     handleImageError: function handleImageError(res, file) {
       this.error('Oppsss!!!', file.errors.file.length ? file.errors.file[0] : 'Something went wrong.');
     },
@@ -2077,68 +2177,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.success('Great!!!', 'Image uploaded successfully.');
     },
     onImageRemove: function onImageRemove(file, filelist) {
-      var _this3 = this;
+      var _this4 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.next = 2;
-                return _this3.callApi('post', '/admin/category/image/remove', {
+                _context4.next = 2;
+                return _this4.callApi('post', '/admin/category/image/remove', {
                   file: file.response
                 });
 
               case 2:
-                res = _context3.sent;
+                res = _context4.sent;
 
                 if (res.status === 200) {
-                  _this3.data.category.iconImage = null;
+                  _this4.data.category.iconImage = null;
 
-                  _this3.info('Success', 'File removed successfully.');
+                  _this4.info('Success', 'File removed successfully.');
 
-                  _this3.$refs.upload.clearFiles();
+                  _this4.$refs.upload.clearFiles();
                 } else {
-                  _this3.error('Oppss!!!', 'Unable to remove uploaded file from server.');
+                  _this4.error('Oppss!!!', 'Unable to remove uploaded file from server.');
                 }
 
               case 4:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3);
+        }, _callee4);
       }))();
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
       var res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
-              _this4.token = window.Laravel.csrfToken;
-              _context4.next = 3;
-              return _this4.callApi('get', '/admin/category/all');
+              _this5.token = window.Laravel.csrfToken;
+              _context5.next = 3;
+              return _this5.callApi('get', '/admin/category/all');
 
             case 3:
-              res = _context4.sent;
-              console.log(res);
+              res = _context5.sent;
 
               if (res.status === 200) {
-                _this4.data.categories = res.data;
+                _this5.data.categories = res.data;
               }
 
-            case 6:
+            case 5:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4);
+      }, _callee5);
     }))();
   }
 });
@@ -67832,16 +67931,28 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(category.iconImage))]),
+                        _c("td", [_vm._v(_vm._s(category.categoryName))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(category.created_at))]),
                         _vm._v(" "),
                         _c(
                           "td",
                           [
-                            _c("Button", { attrs: { type: "info" } }, [
-                              _vm._v("Edit")
-                            ]),
+                            _c(
+                              "Button",
+                              {
+                                attrs: { type: "info" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.loadEditCategoryModal(
+                                      category.id,
+                                      i
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("Edit")]
+                            ),
                             _vm._v(" "),
                             _c("Button", { attrs: { type: "error" } }, [
                               _vm._v("remove")
@@ -67917,8 +68028,8 @@ var render = function() {
           _c(
             "Upload",
             {
+              ref: "upload",
               attrs: {
-                multiple: "",
                 type: "drag",
                 action: "admin/category/image/upload",
                 headers: {
@@ -67982,6 +68093,124 @@ var render = function() {
                   on: { click: _vm.addNewCategory }
                 },
                 [_vm._v(_vm._s(_vm.isAdding ? "Adding..." : "Add Category"))]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "Modal",
+        {
+          attrs: {
+            title: "Edit Category",
+            "mask-closable": false,
+            closable: false
+          },
+          model: {
+            value: _vm.editCategoryModal,
+            callback: function($$v) {
+              _vm.editCategoryModal = $$v
+            },
+            expression: "editCategoryModal"
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.category.categoryName,
+                expression: "data.category.categoryName"
+              }
+            ],
+            staticStyle: { width: "100%" },
+            attrs: { placeholder: "Enter Category Name Here ...." },
+            domProps: { value: _vm.data.category.categoryName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.data.category, "categoryName", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-2" }),
+          _vm._v(" "),
+          _c(
+            "Upload",
+            {
+              ref: "uploadCategoryImage",
+              attrs: {
+                type: "drag",
+                action: "admin/category/image/upload",
+                headers: {
+                  "x-csrf-token": _vm.token,
+                  "X-requested-with": "XMLHttpRequest"
+                },
+                "on-success": _vm.handleImageSuccess,
+                format: ["jpg", "jpeg", "png"],
+                "on-format-error": _vm.handleImageFormatError,
+                "max-size": 2048,
+                "on-exceeded-size": _vm.handleImageMaxSize,
+                "on-error": _vm.handleImageError,
+                "on-remove": _vm.onImageRemove
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticStyle: { padding: "20px 0" } },
+                [
+                  _c("Icon", {
+                    staticStyle: { color: "#3399ff" },
+                    attrs: { type: "ios-cloud-upload", size: "52" }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Click or drag image here to upload")])
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.data.category.iconImage
+            ? _c("div", [
+                _c("img", {
+                  attrs: {
+                    src: "uploads/category/" + _vm.data.category.iconImage,
+                    height: "50",
+                    width: "50"
+                  }
+                })
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            { attrs: { slot: "footer" }, slot: "footer" },
+            [
+              _c(
+                "Button",
+                {
+                  attrs: { type: "error" },
+                  on: { click: _vm.cancelAddCategoryModal }
+                },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "Button",
+                {
+                  attrs: { type: "error", loading: _vm.isAdding },
+                  on: { click: _vm.updateCategory }
+                },
+                [_vm._v(_vm._s(_vm.isAdding ? "Editing..." : "Edit Category"))]
               )
             ],
             1
