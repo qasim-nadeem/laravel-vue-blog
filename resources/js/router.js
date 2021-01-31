@@ -10,6 +10,9 @@ import loopcondition from "./pages/loopcondition";
 import tagsPage from "./pages/admin/tagsPage.vue";
 import categoryPage from "./pages/admin/categoryPage.vue";
 
+//learning vuex
+import vuexPage from "./pages/vuex/index";
+
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -46,6 +49,11 @@ export default new VueRouter({
             path: '/loopcondition',
             name:'loopcondition',
             component: loopcondition
+        },
+        {
+            path: '/vuex',
+            name:'vuex',
+            component: vuexPage
         },
     ]
 });
