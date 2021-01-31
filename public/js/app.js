@@ -2711,6 +2711,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _compA__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./compA */ "./resources/js/pages/vuex/compA.vue");
 /* harmony import */ var _compB__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./compB */ "./resources/js/pages/vuex/compB.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2720,15 +2727,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {},
-  methods: {
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+    'counter': 'getCounterValue'
+  })),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
+    'increamentCounter': 'increamentCounter'
+  })), {}, {
     incCounter: function incCounter() {
-      this.$store.commit('increamentCounter', 1);
+      //update value using actions, good for while making api calls inside actions, as actions are async
+      // this.$store.dispatch('increamentCounter',1);
+      // map your action to give it a nicer name to call it the way bel;ow
+      this.increamentCounter(1); //directly call a mution without the action, as bellow
+      // this.$store.commit('increamentCounter',1);
     }
-  },
+  }),
   components: {
     compA: _compA__WEBPACK_IMPORTED_MODULE_0__.default,
     compB: _compB__WEBPACK_IMPORTED_MODULE_1__.default
@@ -2935,9 +2952,20 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vuex__WEBPACK_IMPORTED_MODULE_1__.d
   state: {
     counter: 0
   },
+  getters: {
+    getCounterValue: function getCounterValue(state) {
+      return state.counter;
+    }
+  },
   mutations: {
     increamentCounter: function increamentCounter(state, payload) {
       state.counter += payload;
+    }
+  },
+  actions: {
+    increamentCounter: function increamentCounter(_ref, payload) {
+      var commit = _ref.commit;
+      commit('increamentCounter', payload);
     }
   }
 }));
@@ -69476,11 +69504,7 @@ var render = function() {
       _c("h3", [_vm._v(" Learning vuex basics ")]),
       _vm._v(" "),
       _c("p", [
-        _vm._v(
-          " Current state of the counter : " +
-            _vm._s(_vm.$store.state.counter) +
-            " "
-        )
+        _vm._v(" Current state of the counter : " + _vm._s(_vm.counter) + " ")
       ]),
       _vm._v(" "),
       _c("compA"),
